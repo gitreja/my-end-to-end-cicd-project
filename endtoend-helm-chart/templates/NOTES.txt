@@ -1,0 +1,18 @@
+Thank you for installing {{ .Chart.Name }}!
+
+Here are the details of your deployment:
+
+1. Frontend Service:
+   URL: http://{{ .Values.ingress.hosts[0].host }}
+
+2. Backend API Service:
+   URL: http://{{ .Values.ingress.hosts[0].host }}/api
+
+3. If you’re using `kubectl port-forward`:
+   Frontend: kubectl port-forward service/{{ .Release.Name }}-frontend {{ .Values.frontend.servicePort }}:80
+   Backend: kubectl port-forward service/{{ .Release.Name }}-backend {{ .Values.backend.servicePort }}:5000
+
+To check the status of your resources:
+   kubectl get all -l release={{ .Release.Name }}
+
+Enjoy your deployment!
